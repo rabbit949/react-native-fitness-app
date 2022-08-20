@@ -1,6 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
+  Alert,
   Platform,
   StatusBar,
   StyleSheet,
@@ -11,12 +12,29 @@ import {
 } from "react-native";
 import * as Animatable from "react-native-animatable";
 import { LockClosedIcon, MailIcon } from "react-native-heroicons/outline";
+import { auth } from "../Firebase";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const logIn = () => {};
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      console.log(authUser);
+      if (authUser) {
+        navigation.navigate("Stack", {
+          screen: "Home",
+        });
+      }
+    });
+    return unsubscribe;
+  }, []);
+
+  const logIn = () => {
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .catch((error) => Alert.alert(error));
+  };
 
   return (
     <View style={styles.container}>

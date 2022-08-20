@@ -1,4 +1,4 @@
-import {createDrawerNavigator} from "@react-navigation/drawer";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import CustomDrawer from "../components/CustomDrawer";
 import TabNavigator from "./TabNavigator";
 
@@ -7,8 +7,8 @@ const Drawer = createDrawerNavigator();
 const AppStack = () => {
   return (
     <Drawer.Navigator
-      drawerContent={props => <CustomDrawer {...props} />}
-      screenOptions={{headerShown: false}}>
+      drawerContent={(props) => <CustomDrawer {...props} />}
+      screenOptions={{ headerShown: false }}>
       {/* <Drawer.Screen name='Home' component={HomeScreen} />
       <Drawer.Screen component={SearchScreen} name='Search'/>
       <Drawer.Screen component={ActivityScreen} name='My Activity'/>

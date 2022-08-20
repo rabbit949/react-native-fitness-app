@@ -1,8 +1,7 @@
 import { LinearGradient } from "expo-linear-gradient";
-import React from "react";
+import React, { useState } from "react";
 import {
   Alert,
-  KeyboardAvoidingView,
   Platform,
   StatusBar,
   StyleSheet,
@@ -23,12 +22,13 @@ const RegisterScreen = ({ navigation }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
 
   const register = () => {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((authUser) => {
-        authUser.user.update({
+        authUser.user.updateProfile({
           displayName: name,
           photoURL:
             imageUrl ||
@@ -45,62 +45,54 @@ const RegisterScreen = ({ navigation }) => {
         <Text style={styles.text_header}>Register Now!</Text>
       </View>
       <Animatable.View animation="fadeInUpBig" style={styles.footer}>
-        <KeyboardAvoidingView behavior="padding">
-          <Text style={styles.text_footer}>Email</Text>
-          <View style={styles.action}>
-            <MailIcon color="#05375a" size={20} />
-            <TextInput
-              placeholder="Enter Your Email"
-              style={styles.textInput}
-              autoCapitalize="none"
-              type="email"
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-            />
-          </View>
-          <Text
-            style={[
-              styles.text_footer,
-              {
-                marginTop: 35,
-              },
-            ]}>
-            UserName
-          </Text>
-          <View style={styles.action}>
-            <UserIcon color="#05375a" size={20} />
-            <TextInput
-              placeholder="What Should We Call You?"
-              style={styles.textInput}
-              autoCapitalize="none"
-              type="text"
-              value={name}
-              onChangeText={(text) => setName(text)}
-            />
-          </View>
-          <Text
-            style={[
-              styles.text_footer,
-              {
-                marginTop: 35,
-              },
-            ]}>
-            Password
-          </Text>
-          <View style={styles.action}>
-            <LockClosedIcon color="#05375a" size={20} />
-            <TextInput
-              placeholder="Enter Your Password"
-              secureTextEntry
-              type="password"
-              style={styles.textInput}
-              autoCapitalize="none"
-              value={password}
-              onChangeText={(text) => setPassword(text)}
-            />
-          </View>
+        <View style={styles.action}>
+          <MailIcon color="#05375a" size={20} />
+          <TextInput
+            placeholder="Enter Your Email"
+            style={styles.textInput}
+            autoCapitalize="none"
+            type="email"
+            value={email}
+            onChangeText={(text) => setEmail(text)}
+          />
+        </View>
+        <View style={styles.action}>
+          <UserIcon color="#05375a" size={20} />
+          <TextInput
+            placeholder="What Should We Call You?"
+            style={styles.textInput}
+            autoCapitalize="none"
+            type="text"
+            value={name}
+            onChangeText={(text) => setName(text)}
+          />
+        </View>
 
-          <View style={styles.textPrivate}>
+        <View style={styles.action}>
+          <UserIcon color="#05375a" size={20} />
+          <TextInput
+            placeholder="Image URL"
+            style={styles.textInput}
+            autoCapitalize="none"
+            type="text"
+            value={imageUrl}
+            onChangeText={(text) => setImageUrl(text)}
+          />
+        </View>
+        <View style={styles.action}>
+          <LockClosedIcon color="#05375a" size={20} />
+          <TextInput
+            placeholder="Enter Your Password"
+            secureTextEntry
+            type="password"
+            style={styles.textInput}
+            autoCapitalize="none"
+            value={password}
+            onChangeText={(text) => setPassword(text)}
+          />
+        </View>
+
+        {/* <View style={styles.textPrivate}>
             <Text style={styles.color_textPrivate}>
               By signing up you agree to our
             </Text>
@@ -113,46 +105,45 @@ const RegisterScreen = ({ navigation }) => {
               {" "}
               Privacy policy.
             </Text>
-          </View>
-          <View style={styles.button}>
-            <TouchableOpacity style={styles.signIn} onPress={register}>
-              <LinearGradient
-                colors={["#08d4c4", "#01ab9d"]}
-                style={styles.signIn}>
-                <Text
-                  style={[
-                    styles.textSign,
-                    {
-                      color: "#fff",
-                    },
-                  ]}>
-                  Register
-                </Text>
-              </LinearGradient>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              onPress={() => navigation.goBack()}
-              style={[
-                styles.signIn,
-                {
-                  borderColor: "#009387",
-                  borderWidth: 1,
-                  marginTop: 15,
-                },
-              ]}>
+          </View> */}
+        <View style={styles.button}>
+          <TouchableOpacity style={styles.signIn} onPress={register}>
+            <LinearGradient
+              colors={["#08d4c4", "#01ab9d"]}
+              style={styles.signIn}>
               <Text
                 style={[
                   styles.textSign,
                   {
-                    color: "#009387",
+                    color: "#fff",
                   },
                 ]}>
-                Login
+                Register
               </Text>
-            </TouchableOpacity>
-          </View>
-        </KeyboardAvoidingView>
+            </LinearGradient>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={[
+              styles.signIn,
+              {
+                borderColor: "#009387",
+                borderWidth: 1,
+                marginTop: 15,
+              },
+            ]}>
+            <Text
+              style={[
+                styles.textSign,
+                {
+                  color: "#009387",
+                },
+              ]}>
+              Login
+            </Text>
+          </TouchableOpacity>
+        </View>
       </Animatable.View>
     </View>
   );
@@ -172,7 +163,7 @@ const styles = StyleSheet.create({
     paddingBottom: 50,
   },
   footer: {
-    flex: Platform.OS === "ios" ? 3 : 5,
+    flex: Platform.OS === "ios" ? 4 : 5,
     backgroundColor: "#fff",
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
@@ -190,10 +181,10 @@ const styles = StyleSheet.create({
   },
   action: {
     flexDirection: "row",
-    marginTop: 10,
+    marginTop: 15,
     borderBottomWidth: 1,
     borderBottomColor: "#f2f2f2",
-    paddingBottom: 5,
+    paddingBottom: 10,
   },
   textInput: {
     flex: 1,

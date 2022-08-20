@@ -4,11 +4,11 @@
     "slug": "my-fitness",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/H.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/H.png",
-      "resizeMode": "contain",
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -19,16 +19,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      // "adaptiveIcon": {
-      //   "foregroundImage": "./assets/H.png",
-      //   "backgroundColor": "#FFFFFF"
-      // }
     },
     "android": {
-      // "adaptiveIcon": {
-      //   "foregroundImage": "./assets/H.png",
-      //   "backgroundColor": "#FFFFFF"
-      // }
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
     },
     "web": {
       "favicon": "./assets/H.png"
