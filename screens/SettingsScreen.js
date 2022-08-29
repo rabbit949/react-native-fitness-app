@@ -9,10 +9,17 @@ import {
   View,
 } from "react-native";
 import * as Animatable from "react-native-animatable";
-import { LogoutIcon, UserIcon } from "react-native-heroicons/outline";
+import { LogoutIcon } from "react-native-heroicons/outline";
 import { auth } from "../Firebase";
 
 const SettingsScreen = ({ navigation }) => {
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => navigation.replace("Login"))
+      .catch((error) => alert(error.message));
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -30,18 +37,9 @@ const SettingsScreen = ({ navigation }) => {
       </View>
       <Animatable.View style={styles.footer} animation="fadeInUpBig">
         <Text style={styles.title}>Profile Settings</Text>
+        <View style={styles.button}></View>
         <View style={styles.button}>
-          <TouchableOpacity onPress={() => {}}>
-            <LinearGradient
-              colors={["#8860A2", "#C7B8F5"]}
-              style={styles.signIn}>
-              <Text style={styles.textSign}>Edit Profile</Text>
-              <UserIcon style={{ marginLeft: 5 }} size={15} color="#fff" />
-            </LinearGradient>
-          </TouchableOpacity>
-        </View>
-        <View style={styles.button}>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={handleSignOut}>
             <LinearGradient
               colors={["#8860A2", "#C7B8F5"]}
               style={styles.signIn}>
@@ -64,6 +62,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#C7B8F5",
+    marginBottom: 40,
   },
   header: {
     flex: 2,

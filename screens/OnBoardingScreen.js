@@ -29,7 +29,7 @@ const OnBoardingScreen = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Animatable.View
-          className="p-5 bg-teal-500  rounded-full"
+          className="p-5 bg-[#C7B8F5] border border-purple-900 rounded-full"
           animation="bounceIn"
           duration={1500}>
           <Image
@@ -48,7 +48,7 @@ const OnBoardingScreen = ({ navigation }) => {
               navigation.navigate("Login");
             }}>
             <LinearGradient
-              colors={["#08d4c4", "#01ab9d"]}
+              colors={["#8860A2", "#C7B8F5"]}
               style={styles.signIn}>
               <Text style={styles.textSign}>Login</Text>
               <ChevronRightIcon
@@ -65,7 +65,7 @@ const OnBoardingScreen = ({ navigation }) => {
               navigation.navigate("Register");
             }}>
             <LinearGradient
-              colors={["#08d4c4", "#01ab9d"]}
+              colors={["#8860A2", "#C7B8F5"]}
               style={styles.signIn}>
               <Text style={styles.textSign}>Register</Text>
               <ChevronRightIcon
@@ -89,7 +89,7 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#009387",
+    backgroundColor: "#C7B8F5",
   },
   header: {
     flex: 2,

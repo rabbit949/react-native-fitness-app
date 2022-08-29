@@ -22,7 +22,7 @@ const LoginScreen = ({ navigation }) => {
     const unsubscribe = auth.onAuthStateChanged((authUser) => {
       console.log(authUser);
       if (authUser) {
-        navigation.navigate("Stack", {
+        navigation.replace("Stack", {
           screen: "Home",
         });
       }
@@ -33,19 +33,21 @@ const LoginScreen = ({ navigation }) => {
   const logIn = () => {
     auth
       .signInWithEmailAndPassword(email, password)
-      .catch((error) => Alert.alert(error));
+      .catch((error) =>
+        Alert.alert("Invalid Credentials", "The email or password is invalid"),
+      );
   };
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#009387" barStyle="light-content" />
+      <StatusBar backgroundColor="#C7B8F5" barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.text_header}>Welcome!</Text>
       </View>
       <Animatable.View animation="fadeInUpBig" style={styles.footer}>
         <Text style={styles.text_footer}>Email</Text>
         <View style={styles.action}>
-          <MailIcon size={20} color={"#009387"} />
+          <MailIcon size={20} color={"#8860A2"} />
           <TextInput
             placeholder="Enter Email"
             keyboardType="email-address"
@@ -58,7 +60,7 @@ const LoginScreen = ({ navigation }) => {
         </View>
         <Text style={styles.text_footer}>Password</Text>
         <View style={styles.action}>
-          <LockClosedIcon size={20} color={"#009387"} />
+          <LockClosedIcon size={20} color={"#8860A2"} />
           <TextInput
             placeholder="Enter Password"
             style={styles.textInput}
@@ -73,17 +75,17 @@ const LoginScreen = ({ navigation }) => {
           <TouchableOpacity style={styles.signIn} onPress={logIn}>
             <LinearGradient
               style={styles.signIn}
-              colors={["#08d4c4", "#01ab9d"]}>
+              colors={["#8860A2", "#C7B8F5"]}>
               <Text style={[styles.textSign, { color: "#fff" }]}>Sign In</Text>
             </LinearGradient>
           </TouchableOpacity>
           <TouchableOpacity
             style={[
               styles.signIn,
-              { borderColor: "#009387", borderWidth: 1, marginTop: 20 },
+              { borderColor: "#8860A2", borderWidth: 1, marginTop: 20 },
             ]}
             onPress={() => navigation.navigate("Register")}>
-            <Text style={[styles.textSign, { color: "#009387" }]}>
+            <Text style={[styles.textSign, { color: "#8860A2" }]}>
               Register Account
             </Text>
           </TouchableOpacity>
@@ -98,7 +100,7 @@ export default LoginScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#009387",
+    backgroundColor: "#C7B8F5",
   },
   header: {
     flex: 1,
@@ -117,7 +119,7 @@ const styles = StyleSheet.create({
   text_header: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 30,
+    fontSize: 34,
   },
   text_footer: {
     color: "#05375a",

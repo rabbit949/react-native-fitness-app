@@ -4,11 +4,11 @@ import {
   FlatList,
   Image,
   SafeAreaView,
-  ScrollView,
   Text,
   TouchableOpacity,
   View,
 } from "react-native";
+import { ScrollView } from "react-native-virtualized-view";
 import cycle from "../assets/cycle.gif";
 import pulse from "../assets/pulse.gif";
 import steps from "../assets/steps.gif";
@@ -64,7 +64,7 @@ const HomeScreen = () => {
   const ExerciseItem = ({ exercise }) => {
     return (
       <TouchableOpacity
-        onPress={() => navigation.navigate("Stack", { screen: "Tools" })}
+        onPress={() => navigation.navigate("Suggestions")}
         activeOpacity={0.8}
         style={{
           backgroundColor: COLORS.white,
@@ -98,7 +98,7 @@ const HomeScreen = () => {
         <Header />
       </SafeAreaView>
       {/* Body */}
-      <ScrollView className="flex-1 mb-10">
+      <ScrollView className="flex-1 mb-10" showsVerticalScrollIndicator={false}>
         <View
           style={{
             width: "100%",
@@ -150,7 +150,7 @@ const HomeScreen = () => {
           </View>
 
           <Text style={{ fontSize: 30, lineHeight: 45, color: "#8860A2" }}>
-            Good Morning,
+            Good to see you back,
           </Text>
           <View
             style={{

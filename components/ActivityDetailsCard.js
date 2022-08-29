@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
 import React, { useState } from "react";
 import { Image, ScrollView, Text, TouchableOpacity, View } from "react-native";
@@ -6,6 +7,7 @@ import { HeartIcon, TemplateIcon } from "react-native-heroicons/outline";
 import BpmValue from "./BpmValue";
 
 const AcitvityCard = () => {
+  const navigation = useNavigation();
   const [temp, setTemp] = useState("36.5");
   function randomNumberInRange(min, max) {
     // 👇️ get number between min (inclusive) and max (inclusive)
@@ -19,14 +21,14 @@ const AcitvityCard = () => {
 
   return (
     <View className="bg-white  rounded-lg m-2 h-full w-full p-4 ">
-      <ScrollView className=" mb-40">
+      <ScrollView className=" mb-40" showsVerticalScrollIndicator={false}>
         <View className="p-5 bg-gray-100 items-center rounded-2xl mb-5">
           <View className="bg-white border-4 mt-2 h-40 w-40 shadow-md  border-purple-100 rounded-full  items-center justify-center">
             <View>
               <LottieView
                 autoPlay
                 loop
-                style={{ width: 300, height: 300, borderRadius: 150 }}
+                style={{ width: 150, height: 150, borderRadius: 150 }}
                 source={require("../assets/animated/pulse.json")}
               />
             </View>
@@ -38,11 +40,13 @@ const AcitvityCard = () => {
             <Text className="text-xs font-medium ">bpm</Text>
           </View>
           <View className="m-4">
-            <TouchableOpacity onPress={() => {}} activeOpacity={0.75}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Suggestions")}
+              activeOpacity={0.8}>
               <View className=" px-6 py-3 flex-row items-center justify-center gap-1 bg-red-500 rounded-2xl ">
                 <HeartIcon color="white" />
                 <Text className="text-xl font-normal text-white">
-                  Checking...
+                  Our Recommendations
                 </Text>
               </View>
             </TouchableOpacity>

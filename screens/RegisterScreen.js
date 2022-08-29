@@ -35,18 +35,20 @@ const RegisterScreen = ({ navigation }) => {
             "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png",
         });
       })
-      .catch((error) => Alert.alert(error.message));
+      .catch((error) =>
+        Alert.alert("Opsss!!!", "Please Enter Valid Credentials"),
+      );
   };
 
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#009387" barStyle="light-content" />
+      <StatusBar backgroundColor="#C7B8F5" barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.text_header}>Register Now!</Text>
       </View>
       <Animatable.View animation="fadeInUpBig" style={styles.footer}>
         <View style={styles.action}>
-          <MailIcon color="#05375a" size={20} />
+          <MailIcon color="#8860A2" size={20} />
           <TextInput
             placeholder="Enter Your Email"
             style={styles.textInput}
@@ -57,7 +59,7 @@ const RegisterScreen = ({ navigation }) => {
           />
         </View>
         <View style={styles.action}>
-          <UserIcon color="#05375a" size={20} />
+          <UserIcon color="#8860A2" size={20} />
           <TextInput
             placeholder="What Should We Call You?"
             style={styles.textInput}
@@ -69,7 +71,7 @@ const RegisterScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.action}>
-          <UserIcon color="#05375a" size={20} />
+          <UserIcon color="#8860A2" size={20} />
           <TextInput
             placeholder="Image URL"
             style={styles.textInput}
@@ -80,7 +82,7 @@ const RegisterScreen = ({ navigation }) => {
           />
         </View>
         <View style={styles.action}>
-          <LockClosedIcon color="#05375a" size={20} />
+          <LockClosedIcon color="#8860A2" size={20} />
           <TextInput
             placeholder="Enter Your Password"
             secureTextEntry
@@ -91,25 +93,10 @@ const RegisterScreen = ({ navigation }) => {
             onChangeText={(text) => setPassword(text)}
           />
         </View>
-
-        {/* <View style={styles.textPrivate}>
-            <Text style={styles.color_textPrivate}>
-              By signing up you agree to our
-            </Text>
-            <Text style={[styles.color_textPrivate, { fontWeight: "bold" }]}>
-              {" "}
-              Terms of service
-            </Text>
-            <Text style={styles.color_textPrivate}> and</Text>
-            <Text style={[styles.color_textPrivate, { fontWeight: "bold" }]}>
-              {" "}
-              Privacy policy.
-            </Text>
-          </View> */}
         <View style={styles.button}>
           <TouchableOpacity style={styles.signIn} onPress={register}>
             <LinearGradient
-              colors={["#08d4c4", "#01ab9d"]}
+              colors={["#8860A2", "#C7B8F5"]}
               style={styles.signIn}>
               <Text
                 style={[
@@ -128,7 +115,7 @@ const RegisterScreen = ({ navigation }) => {
             style={[
               styles.signIn,
               {
-                borderColor: "#009387",
+                borderColor: "#8860A2",
                 borderWidth: 1,
                 marginTop: 15,
               },
@@ -137,7 +124,7 @@ const RegisterScreen = ({ navigation }) => {
               style={[
                 styles.textSign,
                 {
-                  color: "#009387",
+                  color: "#8860A2",
                 },
               ]}>
               Login
@@ -154,7 +141,7 @@ export default RegisterScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#009387",
+    backgroundColor: "#C7B8F5",
   },
   header: {
     flex: 1,
@@ -173,7 +160,7 @@ const styles = StyleSheet.create({
   text_header: {
     color: "#fff",
     fontWeight: "bold",
-    fontSize: 30,
+    fontSize: 34,
   },
   text_footer: {
     color: "#05375a",

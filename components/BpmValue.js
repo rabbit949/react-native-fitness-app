@@ -3,7 +3,6 @@ import { Text } from "react-native";
 import { useFetch } from "../hooks/useFetch";
 
 const BpmValue = () => {
-  const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState("");
   const [result, setResult] = useState("");
   const url =
@@ -25,11 +24,9 @@ const BpmValue = () => {
       const res = await useFetch(url, bpmOptions);
       setData(res.results[res.results.length - 1].value / 20);
       setResult(Math.random() * (data - (data - 1)) + (data - 1));
-      console.log(result);
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
     }
   };
 

@@ -18,7 +18,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
@@ -27,7 +27,7 @@
       }
     },
     "web": {
-      "favicon": "./assets/H.png"
+      "favicon": "./assets/icon.png"
     }
   }
 }

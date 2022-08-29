@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useNavigation } from "@react-navigation/native";
-import React, { useLayoutEffect } from "react";
+import React from "react";
 import { StyleSheet, View } from "react-native";
 import {
   AdjustmentsIcon,
@@ -13,17 +13,17 @@ import ActivityScreen from "../screens/ActivityScreen";
 import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
 import SettingsScreen from "../screens/SettingsScreen";
-import ToolsScreen from "../screens/ToolsScreen";
+import SuggestionScreen from "../screens/SuggestionScreen";
 
 const Tab = createBottomTabNavigator();
 const TabNavigator = () => {
   // removes the default top header
   const navigation = useNavigation();
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
+  // useLayoutEffect(() => {
+  //   navigation.setOptions({
+  //     headerShown: false,
+  //   });
+  // }, []);
 
   return (
     <Tab.Navigator
@@ -32,7 +32,7 @@ const TabNavigator = () => {
         tabBarShowLabel: false,
         tabBarStyle: {
           position: "absolute",
-          bottom: 10,
+          bottom: 5,
           left: 15,
           right: 15,
           elevation: 0,
@@ -66,7 +66,7 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Search"
+        name="Find"
         component={SearchScreen}
         options={{
           tabBarIcon: ({ focused }) => (
@@ -108,8 +108,8 @@ const TabNavigator = () => {
         }}
       />
       <Tab.Screen
-        name="Tools"
-        component={ToolsScreen}
+        name="Suggestions"
+        component={SuggestionScreen}
         options={{
           tabBarIcon: ({ focused }) => (
             <View
